@@ -15,9 +15,22 @@ Route::get('/', function () {
     return view('welcome');
     //return 'Hi';
 });
-Route::get('welcome', function () {
-    return 'Welcome Hi';
+Route::get('control', function () {
+    $name='Diego';
+	$options=array(
+	    'name'=>$name,
+	    'lastName'=>'Silva',
+        'profile'=>'admin'
+    );
+	return view('control')->with('options',$options);
+    //    return view('control',compact('name'));
+    //    return view('control', ['name'=>$name]);
+    //    return view('control')->with('name',$name);
+    //	  return view('control', [
+    //		'name'=>$name,
+    //		'lastName'=>$lastName]);
 });
-Route::get('users/{users}', function ($users) {
-    return 'Welcome '.$users;
+Route::get('users/{users}/{id}', function ($users,$id) {
+    return 'Welcome '.$users. ' with ID='.$id;
 });
+
