@@ -30,7 +30,13 @@ Route::get('control', function () {
     //		'name'=>$name,
     //		'lastName'=>$lastName]);
 });
-Route::get('users/{users}/{id}', function ($users,$id) {
-    return 'Welcome '.$users. ' with ID='.$id;
+//Route::get('users/{users}/{id}', function ($users,$id) {
+Route::get('users/{id}', function ($id) {
+   $users=App\users::find($id);
+   echo $users->username;
+//    return 'Welcome '.$users. ' with ID='.$id;
 });
-
+Route::get('users-name/{username}', function ($username) {
+    $users=App\users::where('username','=',$username)->first();
+    echo $users->password;
+});
